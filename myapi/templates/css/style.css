@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:600&display=swap');
+
+body{
+
+	font-family: 'poppins';
+	color: white;
+	text-align: center;
+	font-size: 14px;
+}
+
+
+.pie_chart_content{
+
+	height: 1100px;
+	background-image: url("https://scandiononcology.com/wp-content/uploads/2018/12/iStock-673266772.jpg");
+}
+
+
+.overlay{
+
+	background-color: #094162e5;
+	height: 1100px;
+	padding-top: 200px;
+padding-bottom: 200px;
+}
+
+
+.pie_chart_content .container{
+
+	background-color: white;
+	border-radius: 40px;
+	padding: 0px;
+}
+
+.main_box h1{
+
+	padding: 50px 0px 50px 0px;
+	color: black;
+	font-size: 25px;
+}
+
+.main_box{
+
+	background-color: white;
+	height: 100%;
+	border-bottom-left-radius: 30px;
+	border-top-left-radius: 30px;
+}
+
+.count_box{
+
+	background-color: #182d6e;
+	border-bottom-right-radius: 30px;
+	border-top-right-radius: 30px;
+	height: 100%;
+	
+	padding: 100px;
+}
+
+
+
+.total-input{
+
+	background-color: #3546b0;
+	border: none;
+	color: white;
+}
+
+.form-control:disabled,
+.form-control[readonly]{
+
+	background-color: #3546b0;
+	opacity: 1;
+
+}
+
+.loanamount-input,.total-input{
+
+	background-color: #2adece;
+	border: none;
+	color: white;
+}
+
+.interest-input{
+
+
+	background-color: #dd3b79;
+	border: none;
+	color: white;
+
+}
+
+
+.year-input{
+
+background-color: #ff766b;
+border: none;
+color: white;
+}
+
+.form-control:focus{
+
+	background-color: transparent;
+	color: white;
+	border: none;
+}

@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Loan Prediction System
+{% endblock %}
+
+{%  block content %}
+{% comment %} {% load crispy_forms_tags %} {% endcomment %}
+  {% if user.is_authenticated %}
+  <p style="font-size:40px; color:orange;">Welcome {{user}}, Here you can calculate total amount of your loan.</p>
+  
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow" style="opacity: 90%">
+      <div class="container" >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item active">
+              <a class="nav-link" href="logout/"> Logout
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+
+            <li class="nav-item active">
+              <a class="nav-link" href="calculator/">Calculate</a>
+                <span class="sr-only" href="#">(current)</span>
+            </li>
+  {% else %}
+  {% load crispy_forms_tags %}
+  <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light static-top mb-5 shadow" style="opacity: 90%">
+      <div class="container" >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="card border-2 shadow my-5" style="background-color: whitesmoke; opacity: 95%">
+        <div class="card-body p-5">
+            <h1 class="font-weight-light">Fill up the information</h1><br>
+
+            <p class="lead mb-0">
+            {% if messages %}
+                <ul class = "messages">
+                     {% for message in messages %}
+                        <div {% if message.tags %} class="{{ message.tags }}" {% endif %} style="margin-left: -40px">
+                            {% if postFlag == 2 %}
+                                <div class="alert alert-danger" role="alert">
+                                    <strong>Application Status: Sorry! your requested loan amount is likely to be rejected.</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endif %}
+                            {% if postFlag == 1 %}
+                                <div class="alert alert-success" role="alert">
+                                    <strong>Application Status: Your requested loan amount is likely to be approved.</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                 </ul>
+            {% endif %}
+            </p>
+
+            <form method = 'post'>
+                {% csrf_token %}
+                {{form|crispy}}
+                <br>
+                <button type = 'submit' class="btn btn-primary" style="position: absolute; right: 50px;">Submit</button>
+            </form>
+
+          <div style="height: 50px"></div>
+
+        </div>
+      </div>
+    </div>
+  
+  {% endif %}
+
+{% endblock %}
