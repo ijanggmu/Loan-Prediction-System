@@ -75,7 +75,6 @@ def approveReject(unit):
 def cxcontact(request):
     postFlag = 0
     if request.method == 'POST':
-        #approvalForm is defined in forms.py
         form = approvalForm(request.POST)
         if form.is_valid():
             ob = approvals()
@@ -134,52 +133,10 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'myform/signup.html', {'form': form})
 
-    # if request.method=="POST":
-    #     fname = request.POST['fname']
-    #     lname = request.POST['lname']
-    #     uname = request.POST['uname']
-    #     Email1 = request.POST['Email1']
-    #     Password1 = request.POST['Password1']
-        
-    #     if len(uname)<10:
-    #         messages.error(request, " Your user name must be under 10 characters")
-    #         return render(request, 'myform/signup.html')
-
-    #     if not uname.isalnum():
-    #         messages.error(request, " User name should only contain letters and numbers")
-    #         return render(request, 'myform/signup.html')
-        
-    #     # Create the user
-    #     myuser = User.objects.create_user(uname, Email1, Password1)
-    #     myuser.first_name= fname
-    #     myuser.last_name= lname
-    #     myuser.save()
-    #     messages.success(request, " Your id has been successfully created")
-    #     return render(request, 'myform/signup.html')
-    # else:
-    #     return HttpResponse("404 - Not found")
-
 def login(request):
     return render(request, 'myform/login.html')
 
-    # if request.method=="POST":
-    #     uname2 = request.POST['uname2']
-    #     Password2 = request.POST['Password2']
 
-    #     user=authenticate(username= uname2, password= Password2)
-    #     if user is not None:
-    #         login(request, user)
-    #         messages.success(request, "Successfully Logged In")
-    #         return render(request, 'myform/login.html')
-    #     else:
-    #         messages.error(request, "Invalid credentials! Please try again")
-    #         return render(request, 'myform/login.html')
-    # return HttpResponse("404- Not found")
-
-# def logout(request): 
-
-#     messages.success(request, "Successfully Logged Out")
-#     return render(request, 'myform/cxform.html')
 
 def index(request):
     return render(request, 'myform/index2.html')
